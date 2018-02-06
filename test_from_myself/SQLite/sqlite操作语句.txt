@@ -1,0 +1,103 @@
+
+-- 常用数据类型
+-- 
+-- NULL - 空值 
+-- INTERGER - 有符号整数类型 
+-- REAL - 浮点数类型 
+-- TEXT - 字符串（其编码取决于DB的编码） 
+-- BLOB - 二进制表示(binary large object)，二进制大对象
+
+
+-- 新增表
+CREATE TABLE IF NOT EXISTS "user" (
+	"id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+	"name" TEXT,
+	"age" INTEGER,
+	"icon" TEXT
+);
+
+
+-- 新建一个临时表
+CREATE TABLE IF NOT EXISTS "user_name" ("name" TEXT);
+
+-- 删除表
+DROP TABLE IF EXISTS user_name;
+
+
+-- 插入
+INSERT INTO user (name, age, icon) VALUES ("Tom", 23, "Tom_icon");
+INSERT INTO user (name, age, icon) VALUES ("Jimi", 24, "Jimi_icon");
+INSERT INTO user (name, age, icon) VALUES ("Jack", 25, "Jack_icon");
+INSERT INTO user (name, age, icon) VALUES ("Mike", 26, "Mike_icon");
+
+
+-- 修改
+UPDATE user SET name = "杰克" WHERE name = "Jack";
+UPDATE user SET name = "汤姆" WHERE name = "Tom";
+
+UPDATE user SET icon = "iconxxx" WHERE age >= 25;
+
+
+-- 查询 * 表示所有
+SELECT * FROM user;
+
+-- 查询部分字段
+SELECT name, age FROM user;
+
+-- 条件约束
+SELECT name FROM user WHERE age >= 25;
+
+-- 模糊查询  使用like关键词 %零个或多个
+SELECT name, icon FROM user WHERE icon LIKE "%icon%";
+
+--《SQL *和%有什么区别》
+--https://zhidao.baidu.com/question/191796354.html  
+
+--模糊查询   "_" 一个字符 
+SELECT name FROM user WHERE name LIKE "汤_";
+
+-- 查询数量
+SELECT COUNT(*) FROM user;
+
+SELECT COUNT(name) FROM user;
+
+-- 排序  默认：ASC (ascend)  升序
+SELECT * FROM user ORDER BY age;
+
+-- 降序 DESC (desend) 
+SELECT * FROM user ORDER BY age DESC;
+
+-- 分页查询 LIMIT， 查询5条
+SELECT * FROM user LIMIT 5;
+
+-- 前面跳过3条，查询5条
+SELECT * FROM user LIMIT 3, 5;
+ 
+-- 字段别名
+SELECT name AS n, age AS a FROM user;
+
+-- 表别名
+SELECT t.name, t.age FROM user AS t;
+
+-- 删除
+DELETE FROM user WHERE id = 1;
+
+-- 参考：
+-- 《SQLite数据库常用操作》
+-- http://blog.csdn.net/qxuewei/article/details/52900455
+
+-- 修改表
+ALTER TABLE user RENAME TO new_user;
+ALTER TABLE new_user RENAME TO user;
+
+-- 结尾增加一列
+ALTER TABLE "user" ADD COLUMN note TEXT;
+
+-- 新建表，从已有表导入数据
+CREATE TABLE IF NOT EXISTS new_user(
+	id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+	name TEXT
+) 
+
+INSERT INTO new_user(name) SELECT name FROM user; 
+

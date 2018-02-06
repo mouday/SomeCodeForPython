@@ -1,0 +1,69 @@
+<!--if/else 标签-->
+<h1>
+    {% block title %}
+    这是主页标题
+    {% endblock %}
+</h1>
+<h2>1、if/else 标签</h2>
+
+{% if condition1 %}
+   condition1 = True
+{% elif condition2 %}
+    condition2 = True
+{% else %}
+    condition1 condition2 = False
+{% endif %}
+<br>
+
+<!--if/else 标签，支持and，or，not-->
+{% if condition1 and condition2 %}
+    condition1 and condition2
+{% endif %}
+<br>
+
+<!--for 标签-->
+<h2>2、for 标签</h2>
+<h3>正向迭代</h3>
+<ul>
+    {% for item in items %}
+    <li>{{ item }}</li>
+    {% endfor %}
+</ul>
+<br>
+
+<h3>反向迭代</h3>
+<ol>
+    {% for item in items reversed %}
+    <li>{{ item }}</li>
+    {% endfor %}
+</ol>
+<br>
+
+<h2>3、ifequal/ifnotequal 标签</h2>
+{% ifequal one two %}
+    {{ one }} equal {{ two }}
+{% else %}
+    {{ one }} not equal {{ two }}
+{% endifequal %}
+
+{# 这是注释，不解释#}
+<br>
+
+<h2>4、过滤器</h2>
+{{ name|upper }}  {# 管道字符 #}
+<br>
+{{ name|lower|first|upper }}
+<br>
+{{ address|truncatewords:"3" }}
+<br>
+{{ currenttime}}
+<br>
+{{ currenttime|date:"F j, Y" }}
+<br>
+{{ currenttime|length }}
+<br>
+{{ currenttime|addslashes }}  {# 添加反斜杠到任何反斜杠、单引号或者双引号前面 #}
+<br>
+
+<h2>5、include 标签</h2>
+{% include "footer.html" %}

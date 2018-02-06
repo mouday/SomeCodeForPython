@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}主页{% endblock %}</title>
+</head>
+<body>
+<h1>欢迎光临</h1>
+{% block content %}主页内容
+<ul>
+<li><a href="time">time</a></li>
+<li><a href="date">date</a></li>
+</ul>
+{% endblock %}
+{% block footer %}
+<hr>
+主页注脚，&copy;2017
+{% endblock %}
+</body>
+</html>

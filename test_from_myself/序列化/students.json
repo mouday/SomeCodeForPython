@@ -1,0 +1,17 @@
+{
+	"std3": {
+		"name": "Jimi",
+		"age": 25,
+		"city": "wuhang"
+	},
+	"std2": {
+		"name": "Jack",
+		"age": 24,
+		"city": "hunan"
+	},
+	"std1": {
+		"name": "Tom",
+		"age": 23,
+		"city": "beijing"
+	}
+}
