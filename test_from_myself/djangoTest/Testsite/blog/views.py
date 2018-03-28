@@ -9,3 +9,7 @@ def index(request):
     for row in order_list:
         data[row.name] = row.date
     return render_to_response("index.html", locals())
+
+def message(request):
+    
+    return render_to_response("message.html")

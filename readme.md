@@ -2,4 +2,7 @@
 
 目录：
 
-待完善
+pycharm_fontcolor    # pycharm console的文字颜色
+send_email           # 发送邮件
+usefulEnum           # 常用的枚举
+test_from_myself     # 平时的简单测试
