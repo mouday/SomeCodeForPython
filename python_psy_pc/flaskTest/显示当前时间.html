@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>显示当前时间</title>
+    <link rel="stylesheet" type="text/css" href="./style.css">
+    <script type="text/javascript" src="./main.js"></script>
+</head>
+<body>
+    <div id="container">
+        <button onclick="start_time()" id="start">开始</button>
+        <p id="prefix">当前时间：</p>
+        <p id="time"></p>
+    </div>
+    <script type="text/javascript">
+        var refresh_id=0;
+        function start_time()
+        {
+            var button= document.getElementById("start");
+            if(button.textContent=="开始")
+            {
+                refresh_id=setInterval("refresh_time()",1);
+                button.textContent="停止";
+            }
+            else
+            {
+                button.textContent="开始";
+                clearInterval(refresh_id);
+            }
+            document.getElementById("time");
+        }
+    </script>
+</body>
+</html>
